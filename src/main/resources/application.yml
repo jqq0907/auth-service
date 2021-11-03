@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: auth-service
+  datasource:
+    druid:
+      url: jdbc:mysql://47.119.152.95:3306/xiaoen-admin?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      username: root
+      password: root
+      initial-size: 5
+      max-active: 20
+logging:
+  level:
+    com: debug
+#验证码配置
+kaptcha:
+  height: 50
+  width: 200
+  content:
+    length: 4
+    source: abcdefghjklmnopqrstuvwxyz23456789
+    space: 2
+  font:
+    color: black
+    name: Arial
+    size: 40
+  background-color:
+    from: lightGray
+    to: white
+  border:
+    enabled: true
+    color: black
+    thickness: 1
+#jwt
+jwt:
+  header: Authorization
+  # 令牌前缀
+  token-start-with: Bearer
+  secret-key: cXdxcXd3d3d3d3d3d3d3cWRxd2Vxd2Vxd2Vxd2VxMTIzaDEyM2gyMTEyMw
+  expiration: 1200000
+server:
+  port: 9901
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

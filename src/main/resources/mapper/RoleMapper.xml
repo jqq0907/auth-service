@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.example.entity.Role">
+        <!--@mbg.generated-->
+        <!--@Table `role`-->
+        <id column="role_id" jdbcType="BIGINT" property="roleId"/>
+        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="role_name_zh" jdbcType="VARCHAR" property="roleNameZh"/>
+        <result column="user_code" jdbcType="VARCHAR" property="userCode"/>
+        <result column="data_scope" jdbcType="VARCHAR" property="dataScope"/>
+        <result column="comments" jdbcType="VARCHAR" property="comments"/>
+        <result column="is_deleted" jdbcType="BOOLEAN" property="isDeleted"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="create_id" jdbcType="BIGINT" property="createId"/>
+        <result column="update_id" jdbcType="BIGINT" property="updateId"/>
+        <result column="department_code" jdbcType="VARCHAR" property="departmentCode"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        role_id, role_name, role_name_zh, user_code, data_scope, comments, is_deleted, create_by,
+        create_time, update_by, update_time, create_id, update_id, department_code
+    </sql>
+
+    <select id="selectListByUserId" resultMap="BaseResultMap">
+        select *
+        from role a
+                     left join user_role b on a.role_id = b.role_id and b.user_id = #{userId,jdbcType=BIGINT}
+    </select>
+</mapper>
